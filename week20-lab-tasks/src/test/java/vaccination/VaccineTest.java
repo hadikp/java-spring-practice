@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.mariadb.jdbc.MariaDbDataSource;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -32,9 +33,12 @@ class VaccineTest {
         //flyway.clean();
         flyway.migrate();
         vaccineRepository = new VaccineRepository(dataSource);
-        vaccineRepository.insertData("Kiss József", 45, ChronicDisease.NO, Pregnancy.NO);
+        vaccine = new Vaccine(vaccineRepository);
+
+        /*vaccineRepository.insertData("Kiss József", 45, ChronicDisease.NO, Pregnancy.NO);
         vaccineRepository.insertData("Nagy Eleonóra", 35, ChronicDisease.NO, Pregnancy.YES);
         vaccineRepository.insertData("Szép Virág", 65, ChronicDisease.YES, Pregnancy.NO);
+        vaccineRepository.insertData("Németh Béla", 72, ChronicDisease.YES, Pregnancy.NO);
         vaccineRepository.insertData("Gárdos Géza", 25, ChronicDisease.YES, Pregnancy.NO);
         vaccineRepository.insertData("Szabó Veronika", 32, ChronicDisease.NO, Pregnancy.NO);
         vaccineRepository.insertData("Vedres Károly", 53, ChronicDisease.NO, Pregnancy.NO);
@@ -45,19 +49,20 @@ class VaccineTest {
         vaccineRepository.insertData("Kovács Tamás", 42, ChronicDisease.YES, Pregnancy.NO);
         vaccineRepository.insertData("Török István", 81, ChronicDisease.NO, Pregnancy.NO);
         vaccineRepository.insertData("Fehér Ágnes", 34, ChronicDisease.YES, Pregnancy.YES);
-        vaccineRepository.insertData("Bánkúzi Bendegúz", 93, ChronicDisease.YES, Pregnancy.NO);
+        vaccineRepository.insertData("Bánkúti Bendegúz", 93, ChronicDisease.YES, Pregnancy.NO);*/
 
 
     }
 
     @Test
-    void testReadData() {
-        System.out.println();
+    void testloadData() {
+        vaccine = new Pfizer(vaccineRepository);
+        System.out.println(vaccine.getVaccinationList());
     }
 
-    /*@Test
+    @Test
     public void testPfizer() {
-        vaccine = new Pfizer(dataSource);
+        vaccine = new Pfizer(vaccineRepository);
         List<Person> vaccinationList = vaccine.getVaccinationList();
         assertEquals(15, vaccinationList.size());
         assertEquals("Nagy Eleonóra", vaccinationList.get(0).getName());
@@ -67,7 +72,7 @@ class VaccineTest {
     }
     @Test
     public void testAstraZeneca() {
-        vaccine = new AstraZeneca(dataSource);
+        vaccine = new AstraZeneca(vaccineRepository);
         List<Person> vaccinationList = vaccine.getVaccinationList();
         assertEquals(12, vaccinationList.size());
         assertEquals("Szép Virág", vaccinationList.get(0).getName());
@@ -77,13 +82,13 @@ class VaccineTest {
     }
     @Test
     public void testSinoPharm() {
-        vaccine = new SinoPharm(dataSource);
+        vaccine = new SinoPharm(vaccineRepository);
         List<Person> vaccinationList = vaccine.getVaccinationList();
         assertEquals(7, vaccinationList.size());
         assertEquals("Kiss József", vaccinationList.get(0).getName());
         assertEquals("Szabó Veronika", vaccinationList.get(1).getName());
         assertEquals("Németh Béla", vaccinationList.get(5).getName());
         assertEquals("Török István", vaccinationList.get(6).getName());
-    }*/
+    }
 
 }
