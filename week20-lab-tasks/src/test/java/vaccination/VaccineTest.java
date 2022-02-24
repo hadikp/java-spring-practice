@@ -49,15 +49,9 @@ class VaccineTest {
         vaccineRepository.insertData("Kovács Tamás", 42, ChronicDisease.YES, Pregnancy.NO);
         vaccineRepository.insertData("Török István", 81, ChronicDisease.NO, Pregnancy.NO);
         vaccineRepository.insertData("Fehér Ágnes", 34, ChronicDisease.YES, Pregnancy.YES);
-        vaccineRepository.insertData("Bánkúti Bendegúz", 93, ChronicDisease.YES, Pregnancy.NO);*/
+        vaccineRepository.insertData("Bánkuti Bendegúz", 93, ChronicDisease.YES, Pregnancy.NO);*/
 
 
-    }
-
-    @Test
-    void testloadData() {
-        vaccine = new Pfizer(vaccineRepository);
-        System.out.println(vaccine.getVaccinationList());
     }
 
     @Test
@@ -76,19 +70,18 @@ class VaccineTest {
         List<Person> vaccinationList = vaccine.getVaccinationList();
         assertEquals(12, vaccinationList.size());
         assertEquals("Szép Virág", vaccinationList.get(0).getName());
-        assertEquals("Bánkuti Bendegúz", vaccinationList.get(4).getName());
-        assertEquals("Németh Béla", vaccinationList.get(5).getName());
+        assertEquals("Németh Béla", vaccinationList.get(1).getName());
+        assertEquals("Bánkuti Bendegúz", vaccinationList.get(5).getName());
         assertEquals("Bíró Rita", vaccinationList.get(11).getName());
     }
     @Test
     public void testSinoPharm() {
         vaccine = new SinoPharm(vaccineRepository);
         List<Person> vaccinationList = vaccine.getVaccinationList();
-        assertEquals(7, vaccinationList.size());
+        assertEquals(6, vaccinationList.size());
         assertEquals("Kiss József", vaccinationList.get(0).getName());
         assertEquals("Szabó Veronika", vaccinationList.get(1).getName());
-        assertEquals("Németh Béla", vaccinationList.get(5).getName());
-        assertEquals("Török István", vaccinationList.get(6).getName());
+        assertEquals("Török István", vaccinationList.get(5).getName());
     }
 
 }

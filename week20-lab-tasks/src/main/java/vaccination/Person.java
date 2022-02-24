@@ -37,6 +37,6 @@ public class Person {
                 ", age=" + age +
                 ", chronic=" + chronic +
                 ", pregnant=" + pregnant +
-                '}';
+                "\n";
     }
 }
