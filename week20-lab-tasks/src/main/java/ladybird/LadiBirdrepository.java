@@ -14,6 +14,7 @@ public class LadiBirdrepository {
     }
 
     public List<LadyBird> loadData() {
-        return jdbcTemplate.query("Select * from ladybirds", (rs, rowNum) -> );
+        return jdbcTemplate.query("Select * from ladybirds", (rs, rowNum)
+                -> new LadyBird(rs.getString("hungarian_name"), rs.getString("latin_name"), rs.getString("genus"), rs.getInt("number_of_points")) );
     }
 }
