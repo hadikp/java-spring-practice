@@ -1,13 +1,21 @@
 package bank;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Account {
 
     private String accountNumber;
     private double balance;
+    private List<Transaction> transactions = new ArrayList<>();
 
     public Account(String accountNumber, double balance) {
         this.accountNumber = accountNumber;
         this.balance = balance;
+    }
+
+    public void addTransaction(Transaction transaction) {
+        transactions.add(transaction);
     }
 
     public void withdraw(double amount) {
@@ -33,5 +41,9 @@ public class Account {
 
     public double getBalance() {
         return balance;
+    }
+
+    public List<Transaction> getTransactions() {
+        return new ArrayList<>(transactions);
     }
 }
