@@ -1,5 +1,6 @@
 package bank;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +33,6 @@ public class Account {
         } else {
             this.balance += amount;
         }
-        //return this.balance;
     }
 
     public String getAccountNumber() {
@@ -45,5 +45,17 @@ public class Account {
 
     public List<Transaction> getTransactions() {
         return new ArrayList<>(transactions);
+    }
+
+    public List<Transaction> depositFilter(){
+        return transactions.stream().filter(t->t.getDirection() == Direction.DEPOSIT).toList();
+    }
+
+    public List<Transaction> withdrawFilter(){
+        return transactions.stream().filter(t->t.getDirection() == Direction.WITHDRAW).toList();
+    }
+
+    public List<Transaction> dateFilter(LocalDateTime time){
+        return transactions.stream().filter(f -> f.getTime().isAfter(time)).toList();
     }
 }
