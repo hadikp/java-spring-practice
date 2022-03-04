@@ -13,11 +13,13 @@ public class User {
     public void doTransaction(Transaction transaction) {
         if(transaction.getDirection() == Direction.WITHDRAW) {
             account.withdraw(transaction.getAmount());
+            account.addTransaction(transaction);
 
         } else {
             account.deposit(transaction.getAmount());
+            account.addTransaction(transaction);
         }
-        account.addTransaction(transaction);
+
     }
 
     public String getName() {
